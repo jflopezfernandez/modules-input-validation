@@ -1,15 +1,34 @@
 
 /** Input Validation Module
- *  Author: Jose Fernando Lopez Fernandez
- *  Date: 	10-JUL-2017
+ *  Author: Jose Lopez
  *
  *  Description:
- *  	Header-only template input validation. The caller specifies
- *  	the required input type in the function call as follows:
+ *  	Header-only template console output methods and input
+ * 		validation. There are two output functions, print and
+ * 		println, both of them able to take a variadic number
+ * 		of parameters. One simply inserts a new line char
+ * 		after every output and the other one inserts a space.
+ *
+ * 	Output
+ *	
+ * 		auto username = "user";
+ * 		IO::print("Name:", username);
+ * 		IO::println("Name:", username);
+ *
+ * 		Example:
+ * 		Name: user
+ *
+ * 		Name:
+ * 		user
+ *
+ *	Input Validation:
+ *
+ * 		The caller specifies the required input
+ * 		type in the function call as follows:
  *
  * 		auto userResponse = IO::get<[TYPE]>();
  *
- * 		Examples:
+ * 		Example:
  * 		auto age  = IO::get<int>();
  * 		auto name = IO::get<std::string>();
  *
