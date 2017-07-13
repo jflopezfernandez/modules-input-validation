@@ -37,12 +37,14 @@
 #ifndef _INPUT_VALIDATION_HPP
 #define _INPUT_VALIDATION_HPP
 
-/** Required STL Header Files for this module:
- *  #include <iostream>
- *  #include <limits>
- *  #include <typeinfo>
- *
- */
+
+#include <iostream>
+#include <limits>
+#include <typeinfo>
+
+
+// TODO: Fix module "half-checks"
+// TODO: Remove print functions as they might not be necessary
 
 
 namespace IO {
