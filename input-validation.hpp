@@ -3,23 +3,7 @@
  *  Author: Jose Lopez
  *
  *  Description:
- *  	Header-only template console output methods and input
- * 		validation. There are two output functions, print and
- * 		println, both of them able to take a variadic number
- * 		of parameters. One simply inserts a new line char
- * 		after every output and the other one inserts a space.
- *
- * 	Output
- *	
- * 		auto username = "user";
- * 		IO::print("Name:", username);
- * 		IO::println("Name:", username);
- *
- * 		Example:
- * 		Name: user
- *
- * 		Name:
- * 		user
+ *  	Header-only runtime input validation
  *
  *	Input Validation:
  *
@@ -32,6 +16,10 @@
  * 		auto age  = IO::get<int>();
  * 		auto name = IO::get<std::string>();
  *
+ *
+ *    Contributors:
+ *    Daniel Jour (https://codereview.stackexchange.com/users/20977/daniel-jour)
+ *    Loki Astari (https://codereview.stackexchange.com/users/507/loki-astari)
  */
 
 #ifndef _INPUT_VALIDATION_HPP
@@ -44,40 +32,9 @@
 
 
 // TODO: Fix module "half-checks"
-// TODO: Remove print functions as they might not be necessary
 
 
 namespace IO {
-
-	template <typename T>
-	void print(const T& input)
-	{
-		std::cout << input << ' ';
-	}
-
-
-	template <typename T, typename... Types>
-	void print(const T& firstArg, const Types&... arguments)
-	{
-		std::cout << firstArg << ' ';
-		print(arguments...);
-	}
-
-	
-	template <typename T>
-	void println(const T& input)
-	{
-		std::cout << input << std::endl;
-	}
-	
-	
-	template <typename T, typename... Types>
-	void println(const T& firstArg, const Types&... arguments)
-	{
-		std::cout << firstArg << std::endl;
-		println(arguments...);
-	}
-	
 	
 	template <typename T>
 	T get()
@@ -90,7 +47,7 @@ namespace IO {
 		do {
 			if (std::cin.fail()) {
 					
-				IO::print("[Error] Please enter a valid response:");
+				std::cout << "[Error] Please enter a valid response: ";
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				
